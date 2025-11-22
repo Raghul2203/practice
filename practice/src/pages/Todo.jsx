@@ -7,7 +7,7 @@ const Todo = () => {
 
   // Fetch todos
   const loadTodos = async () => {
-    const res = await axios.get("https://practice-59wn.vercel.app/todos");
+    const res = await axios.get("https://practice-59wn.vercel.app/api/todos");
     setTodos(res.data);
   };
 
@@ -19,14 +19,14 @@ const Todo = () => {
   const addTodo = async () => {
     if (!input.trim()) return;
 
-    await axios.post("https://practice-59wn.vercel.app/add", { item: input });
+    await axios.post("https://practice-59wn.vercel.app/api/add", { item: input });
     setInput("");
     loadTodos();
   };
 
   // Delete todo
   const deleteTodo = async (item) => {
-    await axios.delete("https://practice-59wn.vercel.app/delete", {
+    await axios.delete("https://practice-59wn.vercel.app/api/delete", {
       data: { item },
     });
     loadTodos();
